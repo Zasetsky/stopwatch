@@ -1,26 +1,43 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="app">
+    <div class="stopwatches">
+      <stopwatch v-for="stopwatch in stopwatches" :key="stopwatch.id" :stopwatch="stopwatch" />
+      <add-button @stopwatchAdded="addStopwatch" />
+    </div>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Stopwatch from "./components/Stopwatch.vue";
+import AddButton from "./components/AddButton.vue";
 
 export default {
-  name: 'App',
   components: {
-    HelloWorld
+    Stopwatch,
+    AddButton
+  },
+  data() {
+    return {
+      stopwatches: [], // список секундомеров
+    };
+  },
+  methods: {
+    addStopwatch(stopwatch) { 
+      this.stopwatches.push(stopwatch);
+    }
   }
-}
+};
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style >
+body {
+  margin: 0;
+  background-color: #353638;
 }
+
+.stopwatches {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 </style>
