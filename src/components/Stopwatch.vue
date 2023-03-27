@@ -68,7 +68,7 @@ export default {
             this.localStopwatch.isRunning = true;
             this.localStopwatch.intervalId = setInterval(() => {
                 this.localStopwatch.time++;
-            }, 1); // Уменьшите это значение, чтобы увидеть часы)
+            }, 1000); // Уменьшите это значение, чтобы увидеть часы)
             this.isActive = true;
         },
         pauseStopwatch() { // пауза
